@@ -3,73 +3,120 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-
-const servicios = [
-  {
-    title: "Obras Civiles",
-    desc: "Desarrollamos proyectos de infraestructura pesada, incluyendo cimentaciones profundas, muros de contención y sistemas de drenaje, garantizando la estabilidad y durabilidad de cada estructura en todo momento.",
-    img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5",
-    reverse: false
-  },
-  {
-    title: "Movimiento de Tierras",
-    desc: "Contamos con maquinaria especializada para la excavación, nivelación y compactación de terrenos. Preparamos el área de trabajo con precisión topográfica para proyectos industriales y mineros de alta complejidad.",
-    img: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b",
-    reverse: true
-  },
-  {
-    title: "Edificaciones y Estructuras",
-    desc: "Construcción integral de naves industriales, campamentos y centros corporativos. Gestionamos desde la estructura metálica o de concreto hasta los acabados finales, respetando los plazos de entrega.",
-    img: "https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea",
-    reverse: false
-  }
-];
 ---
 
 <Layout title="Servicios | Lucong SAC">
 	<Navbar />
 	<main>
-		<!-- HERO SERVICIOS AL RAS DE PANTALLA -->
-		<section class="relative w-full h-[calc(100vh-96px)] md:h-[calc(100vh-112px)] min-h-[400px] flex flex-col justify-center bg-black overflow-hidden">
-			<div class="absolute inset-0 w-full h-full">
-				<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e" alt="Fondo Servicios" class="w-full h-full object-cover" />
-			</div>
-			<div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+		<!-- 1. HERO ORIGINAL CON EFECTO PARALLAX Y ANIMACIÓN -->
+		<section class="relative w-full h-[calc(100vh-96px)] md:h-[calc(100vh-112px)] min-h-[400px] flex flex-col justify-center bg-black overflow-hidden bg-fixed bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece');">
+			
+			<div class="absolute inset-0 bg-black/60"></div>
 			
 			<div class="relative z-10 w-full max-w-[1200px] mx-auto px-6 md:px-8">
-				<div class="text-slate-300 text-[13px] md:text-[14px] font-medium mb-6 flex items-center gap-2 animate-slide-in-left" style="animation-delay: 0.1s;">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+				<div class="text-slate-300 text-[13px] md:text-[14px] font-medium mb-4 flex items-center gap-2 animate-slide-in-left" style="animation-delay: 0.1s;">
 					<a href="/" class="hover:text-white transition-colors">Home</a>
 					<span class="text-slate-400">&gt;</span>
 					<span class="text-white font-semibold">Servicios</span>
 				</div>
-				<!-- CORRECCIÓN: text-[54px] y font-bold -->
-				<h1 class="text-[38px] md:text-[54px] font-bold text-white leading-[1.2] tracking-tight animate-slide-in-left" style="animation-delay: 0.3s;">
+				<h1 class="text-[42px] md:text-[60px] font-bold text-white tracking-tight leading-none animate-slide-in-left" style="animation-delay: 0.3s;">
 					Servicios
 				</h1>
 			</div>
 		</section>
 
-		<!-- Lista de Servicios (ZigZag corporativo) -->
-		<section class="py-24 bg-white">
-			<div class="max-w-[1400px] mx-auto px-6">
-				{servicios.map((s, i) => (
-					<div class={`flex flex-col ${s.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16 mb-24 last:mb-0 animate-fade-in-up`} style={`animation-delay: ${i * 0.1}s;`}>
-						<div class="w-full lg:w-1/2">
-							<div class="relative aspect-[4/3] shadow-xl overflow-hidden rounded-md group">
-								<img src={s.img} alt={s.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-								<div class="absolute top-0 left-0 w-2 h-full bg-[#e66c37]"></div>
-							</div>
-						</div>
-						<div class="w-full lg:w-1/2 lg:px-8">
-							<h2 class="text-4xl text-[#333333] font-bold mb-6">{s.title}</h2>
-							<p class="text-lg text-slate-600 font-light leading-relaxed mb-8">{s.desc}</p>
-							<a href="#" class="inline-block border-2 border-[#333333] text-[#333333] hover:bg-[#333333] hover:text-white font-bold px-8 py-3 rounded-full transition-colors shadow-sm">
-								Cotizar Servicio
-							</a>
+		<!-- 2. BLOQUE 1: EDIFICACIONES Y ESTRUCTURAS -->
+		<section class="w-full py-20 bg-white overflow-hidden">
+			<div class="max-w-[1200px] mx-auto px-6 md:px-8">
+				<div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+					<div class="w-full lg:w-1/2 animate-fade-in-up">
+						<div class="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-md border-l-[6px] border-[#e66c37] group cursor-pointer">
+							<img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5" alt="Edificaciones y Estructuras" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105" />
 						</div>
 					</div>
-				))}
+					<div class="w-full lg:w-1/2 animate-fade-in-up" style="animation-delay: 0.2s;">
+						<h2 class="text-[32px] md:text-[40px] font-bold text-[#333333] mb-6 tracking-tight">Edificaciones y Estructuras</h2>
+						<p class="text-slate-500 leading-relaxed text-[16px] md:text-[17px]">
+							Construcción e ingeniería integral de naves industriales, campamentos y centros corporativos. Gestionamos desde la cimentación profunda, estructuras metálicas o de concreto hasta los acabados finales, respetando rigurosamente los plazos de entrega y la estabilidad técnica.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 3. BLOQUE 2: INFRAESTRUCTURA -->
+		<section class="w-full py-20 bg-slate-50/50 overflow-hidden">
+			<div class="max-w-[1200px] mx-auto px-6 md:px-8">
+				<div class="flex flex-col lg:flex-row-reverse gap-12 lg:gap-16 items-center">
+					<div class="w-full lg:w-1/2 animate-fade-in-up">
+						<div class="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-md border-r-[6px] border-[#e66c37] group cursor-pointer">
+							<img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343" alt="Infraestructura" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105" />
+						</div>
+					</div>
+					<div class="w-full lg:w-1/2 animate-fade-in-up" style="animation-delay: 0.2s;">
+						<h2 class="text-[32px] md:text-[40px] font-bold text-[#333333] mb-6 tracking-tight">Infraestructura</h2>
+						<p class="text-slate-500 leading-relaxed text-[16px] md:text-[17px]">
+							Desarrollamos obras civiles complejas de infraestructura vial, hidráulica y urbana. Nos especializamos en la ejecución de pavimentos, redes de saneamiento, muros de contención y sistemas de drenaje de gran escala, asegurando la durabilidad estructural en todo momento.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 4. BLOQUE 3: MOVIMIENTO DE TIERRAS -->
+		<section class="w-full py-20 bg-white overflow-hidden">
+			<div class="max-w-[1200px] mx-auto px-6 md:px-8">
+				<div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+					<div class="w-full lg:w-1/2 animate-fade-in-up">
+						<div class="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-md border-l-[6px] border-[#e66c37] group cursor-pointer">
+							<img src="https://images.unsplash.com/photo-1504307651254-35680f356f58" alt="Movimiento de Tierras" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105" />
+						</div>
+					</div>
+					<div class="w-full lg:w-1/2 animate-fade-in-up" style="animation-delay: 0.2s;">
+						<h2 class="text-[32px] md:text-[40px] font-bold text-[#333333] mb-6 tracking-tight">Movimiento de Tierras</h2>
+						<p class="text-slate-500 leading-relaxed text-[16px] md:text-[17px]">
+							Contamos con maquinaria especializada y pesada para la excavación masiva, nivelación, corte y compactación de terrenos. Preparamos el área de trabajo con altísima precisión topográfica para proyectos industriales, mineros y viales de alta complejidad.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 5. BLOQUE 4: ELABORACIÓN DE EXPEDIENTES TÉCNICOS -->
+		<section class="w-full py-20 bg-slate-50/50 overflow-hidden">
+			<div class="max-w-[1200px] mx-auto px-6 md:px-8">
+				<div class="flex flex-col lg:flex-row-reverse gap-12 lg:gap-16 items-center">
+					<div class="w-full lg:w-1/2 animate-fade-in-up">
+						<div class="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-md border-r-[6px] border-[#e66c37] group cursor-pointer">
+							<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e" alt="Expedientes Técnicos" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105" />
+						</div>
+					</div>
+					<div class="w-full lg:w-1/2 animate-fade-in-up" style="animation-delay: 0.2s;">
+						<h2 class="text-[32px] md:text-[40px] font-bold text-[#333333] mb-6 tracking-tight">Elaboración de Expedientes Técnicos</h2>
+						<p class="text-slate-500 leading-relaxed text-[16px] md:text-[17px]">
+							Planificación técnica y desarrollo detallado de proyectos de ingeniería. Elaboramos estudios de preinversión, planos estructurales, presupuestos analíticos y especificaciones técnicas completas cumpliendo rigurosamente con la normativa pública y privada vigente.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- 6. BLOQUE 5: SUPERVISIÓN DE OBRA -->
+		<section class="w-full py-20 bg-white overflow-hidden">
+			<div class="max-w-[1200px] mx-auto px-6 md:px-8">
+				<div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+					<div class="w-full lg:w-1/2 animate-fade-in-up">
+						<div class="aspect-[4/3] w-full overflow-hidden rounded-lg shadow-md border-l-[6px] border-[#e66c37] group cursor-pointer">
+							<img src="https://images.unsplash.com/photo-1581092160607-ee22530dd83a" alt="Supervisión de Obra" class="w-full h-full object-cover grayscale opacity-90 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105" />
+						</div>
+					</div>
+					<div class="w-full lg:w-1/2 animate-fade-in-up" style="animation-delay: 0.2s;">
+						<h2 class="text-[32px] md:text-[40px] font-bold text-[#333333] mb-6 tracking-tight">Supervisión de Obra</h2>
+						<p class="text-slate-500 leading-relaxed text-[16px] md:text-[17px]">
+							Control técnico, administrativo y contractual exhaustivo durante todo el ciclo de ejecución. Garantizamos el estricto cumplimiento de los estándares de seguridad, control de calidad de materiales, plazos de cronograma y presupuestos aprobados.
+						</p>
+					</div>
+				</div>
 			</div>
 		</section>
 	</main>

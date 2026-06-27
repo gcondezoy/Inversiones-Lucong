@@ -12,27 +12,23 @@ import ProjectCarousel from '../components/react/ProjectCarousel.jsx';
   
   <main class="w-full">
     
-    <section class="relative w-full h-[calc(100vh-96px)] md:h-[calc(100vh-112px)] min-h-[400px] bg-black overflow-hidden flex flex-col">
+    <section class="relative w-full h-[calc(100vh-96px)] md:h-[calc(100vh-112px)] min-h-[500px] flex flex-col justify-center bg-black overflow-hidden bg-fixed bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5');">
       
-      <div class="absolute inset-0 w-full h-full animate-zoom-slow">
-        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5');"></div>
-      </div>
-      
-      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="absolute inset-0 bg-black/40"></div>
 
       <div class="absolute bottom-0 right-0 z-40 flex w-full md:w-[700px] lg:w-[850px] h-[120px] md:h-[160px] shadow-2xl">
         
         <div class="w-[55%] bg-[#e66c37] px-6 md:px-10 flex flex-col justify-center text-white">
           <span class="text-[11px] md:text-[13px] font-bold flex items-center gap-2 mb-2 md:mb-3 tracking-wider uppercase">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-4 md:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            Proyecto
+            Obra
           </span>
           <span class="text-[14px] md:text-[18px] lg:text-[20px] font-medium leading-snug">
             Ampliación del Aeropuerto Internacional Jorge Chávez de Lima
           </span>
         </div>
         
-        <a href="#" class="w-[45%] relative bg-cover bg-center flex items-center justify-center group cursor-pointer" style="background-image: url('https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea');">
+        <a href="/obras" class="w-[45%] relative bg-cover bg-center flex items-center justify-center group cursor-pointer" style="background-image: url('https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea');">
           <div class="absolute inset-0 bg-[#333333]/70 group-hover:bg-[#333333]/50 transition-all duration-300"></div>
           
           <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center text-[#e66c37] shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -78,7 +74,7 @@ import ProjectCarousel from '../components/react/ProjectCarousel.jsx';
       <div class="max-w-[1200px] mx-auto px-6 md:px-8 pt-20 md:pt-28 pb-24">
         <div class="max-w-4xl mb-20"> 
           <h1 class="text-4xl md:text-[56px] font-bold text-[#333333] leading-[1.15] tracking-tight mb-8">
-            Proyectos y Ejecución de Obras Civiles.
+            Ejecución integral de Obras Civiles.
           </h1>
           <p class="text-[18px] md:text-[22px] text-slate-600 font-normal leading-relaxed">
             Construimos el futuro con solidez. Nos especializamos en la ejecución integral de proyectos de infraestructura, garantizando calidad, seguridad y cumplimiento en cada una de nuestras obras civiles a nivel nacional.
@@ -100,46 +96,131 @@ import ProjectCarousel from '../components/react/ProjectCarousel.jsx';
       </div>
     </section>
 
-    <section class="w-full py-28 bg-[#333333] relative overflow-hidden">
-      <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 0% 50%, #ffffff 0%, transparent 50%);"></div>
-      <div class="max-w-[1200px] mx-auto px-6 md:px-8 relative z-10">
-        <h2 class="text-[32px] md:text-[40px] font-bold text-white mb-16 tracking-tight">
-          Nuestras principales actividades
-        </h2>
+    <section class="w-full bg-[#333333] py-24">
+      <div class="max-w-[1200px] mx-auto px-6 md:px-8">
+        <h2 class="text-[32px] md:text-[40px] font-bold text-white mb-12 tracking-tight">Nuestras principales actividades</h2>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { title: "Residencial", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1v1H9V7zm5 0h1v1h-1V7zm-5 4h1v1H9v-1zm5 0h1v1h-1v-1zm-3 4h2a1 1 0 011 1v4h-4v-4a1 1 0 011-1z" },
-            { title: "Industrial", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1v1H9V7zm5 0h1v1h-1V7zm-5 4h1v1H9v-1zm5 0h1v1h-1v-1zm-5 4h1v1H9v-1zm5 0h1v1h-1v-1z" },
-            { title: "Comercial", icon: "M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" },
-            { title: "Infraestructura", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
-            { title: "Hotelero", icon: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" },
-            { title: "Pistas y veredas", icon: "M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" }
-          ].map((act) => (
-            <div class="bg-white/5 border border-white/10 p-8 rounded-sm hover:bg-[#e66c37] hover:border-[#e66c37] transition-all duration-300 group cursor-default flex items-center gap-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#e66c37] group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={act.icon} />
+          
+          <div class="flex items-center gap-6 p-8 rounded-md border border-white/10 bg-white/5 hover:bg-[#e66c37]/10 transition-colors group">
+            <div class="text-[#e66c37] group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.592 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
               </svg>
-              <h3 class="text-xl font-semibold text-white">{act.title}</h3>
             </div>
-          ))}
+            <h3 class="text-white text-[19px] font-semibold group-hover:text-[#e66c37] transition-colors">Residencial</h3>
+          </div>
+
+          <div class="flex items-center gap-6 p-8 rounded-md border border-white/10 bg-white/5 hover:bg-[#e66c37]/10 transition-colors group">
+            <div class="text-[#e66c37] group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5M3 21V6.75A2.25 2.25 0 015.25 4.5h2.25A2.25 2.25 0 019 6.75V12l3.75-3.75 4.5 4.5V3.75A.75.75 0 0118 3h2.25a.75.75 0 01.75.75V21M6.75 9h.008v.008H6.75V9zm0 3h.008v.008H6.75V12zm0 3h.008v.008H6.75V15z" />
+              </svg>
+            </div>
+            <h3 class="text-white text-[19px] font-semibold group-hover:text-[#e66c37] transition-colors">Industrial</h3>
+          </div>
+
+          <div class="flex items-center gap-6 p-8 rounded-md border border-white/10 bg-white/5 hover:bg-[#e66c37]/10 transition-colors group">
+            <div class="text-[#e66c37] group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .414.336.75.75.75z" />
+              </svg>
+            </div>
+            <h3 class="text-white text-[19px] font-semibold group-hover:text-[#e66c37] transition-colors">Comercial</h3>
+          </div>
+
+          <div class="flex items-center gap-6 p-8 rounded-md border border-white/10 bg-white/5 hover:bg-[#e66c37]/10 transition-colors group">
+            <div class="text-[#e66c37] group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 21v-9m6 9v-9m6 9v-9M4.5 12h15M4.5 7.5h15M3 3h18" />
+              </svg>
+            </div>
+            <h3 class="text-white text-[19px] font-semibold group-hover:text-[#e66c37] transition-colors">Infraestructura</h3>
+          </div>
+
+          <div class="flex items-center gap-6 p-8 rounded-md border border-white/10 bg-white/5 hover:bg-[#e66c37]/10 transition-colors group">
+            <div class="text-[#e66c37] group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+              </svg>
+            </div>
+            <h3 class="text-white text-[19px] font-semibold group-hover:text-[#e66c37] transition-colors">Hotelero</h3>
+          </div>
+
+          <div class="flex items-center gap-6 p-8 rounded-md border border-white/10 bg-white/5 hover:bg-[#e66c37]/10 transition-colors group">
+            <div class="text-[#e66c37] group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 3L5 21M15 3l4 18M12 7v2m0 4v2m0 4v2" />
+              </svg>
+            </div>
+            <h3 class="text-white text-[19px] font-semibold group-hover:text-[#e66c37] transition-colors">Pistas y veredas</h3>
+          </div>
+
         </div>
       </div>
     </section>
 
     <section class="w-full py-24 bg-[#f8fafc]">
       <div class="max-w-[1200px] mx-auto px-6 md:px-8">
-        <h2 class="text-[32px] md:text-[40px] font-bold text-[#333333] mb-16 tracking-tight flex items-center gap-3">
-          <span class="text-[#e66c37]">></span> Nuestros principales clientes
+        
+        <h2 class="text-[30px] md:text-[36px] font-bold text-[#333333] mb-16 tracking-tight flex items-center gap-3">
+          <span class="text-[#e66c37] font-medium">></span> Nuestros principales clientes
         </h2>
+        
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 md:gap-16 items-center justify-items-center">
-          {[
-            "Anglo American", "Minera Antamina", "Minera Las Bambas", "Provías Nacional", 
-            "Ministerio de Vivienda", "Consorcio Sur", "Fluor", "Bechtel"
-          ].map((client) => (
-            <div class="w-full h-20 flex items-center justify-center grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300">
-              <span class="text-xl font-bold text-slate-500 text-center leading-tight">{client}</span>
-            </div>
-          ))}
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/CEMENTOS-INKA-p0ezm78419chcvhiijw55lqcrjjavduimsif8ill6g.png" 
+            alt="Cementos Inka" title="Cementos Inka" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/IMPROVEK-p0ezm93sexf203es7kpeal99yba1as1zb1te72isu0.jpg" 
+            alt="Improvek" title="Improvek" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/ENAPU-p0ezmii6b9rx8714oornzivvw5zpfr3aocc8zu4v3s.jpg" 
+            alt="Enapu" title="Enapu" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/GINEBRA-p0ezn1ay3yhnoe9tmww7de53rvf1pp5xexdyldcznc.jpg" 
+            alt="Ginebra" title="Ginebra" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/ANCRO-p0ezngcd5b28u5nz73e8hacha1cx4utmsztq9sqovs.jpg" 
+            alt="Ancro" title="Ancro" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/GRUPO-SILVESTRE-1-p0ezq7z99qun0tn91agotl7c8vptsrt6ioz754myk8.jpg" 
+            alt="Grupo Silvestre" title="Grupo Silvestre" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/ALDESA-1-p0ezq8x3gkvxcflvvsvbe2ysu9l70gwwutmomelke0.png" 
+            alt="Aldesa" title="Aldesa" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/CC-MEXICO-p0ezmrwk7m4sganh5stxogihu0pdkq4m1mv3slqxdk.jpg" 
+            alt="CC Mexico" title="CC Mexico" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/EJERCITO-DEL-PERU-1-p0ezqbqm12zsb9hsfc373k96mf7ank83v7l528hdvc.png" 
+            alt="Ejército del Perú" title="Ejército del Perú" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/UNI-1-p0ezq55qp8qs1zrchr8t43wygq3q5ohzib0qpar52w.png" 
+            alt="UNI" title="UNI" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/MUNICIPALIDAD-DE-CARMEN-DE-LA-LEGUA-p0ezpa52fpkbev0eivu4btqqv0cm3o2ue1hpv614s8.jpg" 
+            alt="Muni Carmen de la Legua" title="Municipalidad de Carmen de la Legua" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/MUNICIPALIDAD-DE-COMAS-p0eznpqr1nf429abo7gi67z37w2l9tuy6acl2kcr5k.png" 
+            alt="Muni Comas" title="Municipalidad de Comas" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+          
+          <img src="https://grupolucianosac.com/wp-content/uploads/elementor/thumbs/MERCADO-CONZAC-p0ezosa4tuvva9qcf647ig8zkosn1f3xzl3hqwrm2g.png" 
+            alt="Mercado Conzac" title="Mercado Conzac" tabindex="0" 
+            class="w-32 md:w-40 lg:w-48 h-20 md:h-24 object-contain mix-blend-multiply grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:scale-105 focus:grayscale-0 focus:opacity-100 focus:scale-105 active:grayscale-0 active:opacity-100 active:scale-105 transition-all duration-300 outline-none cursor-pointer" />
+
         </div>
       </div>
     </section>
@@ -148,16 +229,6 @@ import ProjectCarousel from '../components/react/ProjectCarousel.jsx';
   
   <Footer />
 </Layout>
-
-<style>
-  @keyframes zoom-slow {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.15); }
-  }
-  .animate-zoom-slow {
-    animation: zoom-slow 20s linear infinite alternate;
-  }
-</style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
