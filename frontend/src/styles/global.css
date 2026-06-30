@@ -32,6 +32,18 @@
     animation: zoomInSlow 25s ease-out forwards;
 }
 
+/* Zoom muy sutil y continuo para el fondo del hero (inicio) */
+@keyframes heroZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.06); }
+}
+.animate-hero-zoom {
+    animation: heroZoom 22s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+    .animate-hero-zoom { animation: none; }
+}
+
 /* Animación de caída desde arriba (Para el Navbar) */
 @keyframes dropDown {
     0% { opacity: 0; transform: translateY(-30px); }

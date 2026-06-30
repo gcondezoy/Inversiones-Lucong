@@ -13,35 +13,77 @@ import ProjectCarousel from '../components/react/ProjectCarousel.jsx';
   <main class="w-full">
     
     <!-- 1. HERO DEL INICIO CON PARALLAX -->
-    <section class="relative w-full h-[calc(100vh-96px)] md:h-[calc(100vh-112px)] min-h-[500px] flex flex-col justify-center bg-black overflow-hidden" data-parallax>
-      <div class="parallax-bg absolute inset-x-0 top-[-15%] h-[130%] bg-center bg-cover will-change-transform" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1920&q=70');"></div>
-      
+    <section class="relative w-full h-[calc(100vh-96px)] md:h-[calc(100vh-112px)] min-h-[500px] flex flex-col justify-center bg-black overflow-hidden">
+      <div class="absolute inset-0 bg-center bg-cover animate-hero-zoom" style="background-image: url('/obras/planta-cementos-inka-pisco.jpg');"></div>
+
       <div class="absolute inset-0 bg-black/40"></div>
 
-      <div class="absolute bottom-0 right-0 z-40 flex w-full md:w-[700px] lg:w-[850px] h-[120px] md:h-[160px] shadow-2xl">
-        
+      <button type="button" id="hero-video-trigger" aria-label="Ver video de la Planta Industrial Cementos Inka" class="absolute bottom-0 right-0 z-40 flex w-full md:w-[700px] lg:w-[850px] h-[120px] md:h-[160px] shadow-2xl text-left cursor-pointer group">
+
         <div class="w-[55%] bg-[#e66c37] px-6 md:px-10 flex flex-col justify-center text-white">
           <span class="text-[11px] md:text-[13px] font-bold flex items-center gap-2 mb-2 md:mb-3 tracking-wider uppercase">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-4 md:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            Obra
+            Ver video
           </span>
           <span class="text-[14px] md:text-[18px] lg:text-[20px] font-medium leading-snug">
-            Ampliación del Aeropuerto Internacional Jorge Chávez de Lima
+            Planta Industrial Cementos Inka — Pisco
           </span>
         </div>
-        
-        <a href="/obras" class="w-[45%] relative bg-cover bg-center flex items-center justify-center group cursor-pointer" style="background-image: url('https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?auto=format&fit=crop&w=800&q=70');">
+
+        <div class="w-[45%] relative bg-cover bg-center flex items-center justify-center" style="background-image: url('/obras/cementos-inka-poster.jpg');">
           <div class="absolute inset-0 bg-[#333333]/70 group-hover:bg-[#333333]/50 transition-all duration-300"></div>
-          
+
           <div class="relative z-10 w-12 h-12 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center text-[#e66c37] shadow-lg group-hover:scale-110 transition-transform duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 md:w-7 md:h-7 ml-1">
               <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
             </svg>
           </div>
-        </a>
-        
+        </div>
+
+      </button>
+
+      <!-- MODAL: VIDEO PLANTA CEMENTOS INKA -->
+      <div id="hero-video-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+        <button type="button" id="hero-video-close" aria-label="Cerrar video" class="absolute top-5 right-5 text-white/70 hover:text-white transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-9 h-9"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+        </button>
+        <div class="w-full max-w-[1000px] aspect-video">
+          <video id="hero-video-player" class="w-full h-full rounded-lg shadow-2xl bg-black" controls playsinline preload="none" poster="/obras/cementos-inka-poster.jpg">
+            <source src="/obras/cementos-inka.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
     </section>
+
+    <script is:inline>
+      (function () {
+        const trigger = document.getElementById('hero-video-trigger');
+        const modal = document.getElementById('hero-video-modal');
+        const closeBtn = document.getElementById('hero-video-close');
+        const player = document.getElementById('hero-video-player');
+        if (!trigger || !modal || !player) return;
+
+        function openModal() {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+          try { player.currentTime = 0; player.play(); } catch (e) {}
+        }
+        function closeModal() {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+          document.body.style.overflow = '';
+          player.pause();
+        }
+
+        trigger.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+        });
+      })();
+    </script>
 
     <!-- 2. BANDA DE VALORES / INDICADORES -->
     <section class="w-full bg-[#333333] relative z-30 overflow-hidden">
