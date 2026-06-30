@@ -2,13 +2,17 @@
 // Fuente única de datos de obras. La consumen ProjectTabs (página /obras)
 // y ProjectCarousel (inicio). Las imágenes viven en /public/obras.
 
-export const categorias = ['Residencial', 'Industrial', 'Infraestructura'];
+export const categorias = ['Edificaciones', 'Industrial', 'Infraestructura'];
+
+// Subcategorías que aplican solo a "Edificaciones"
+export const subcategoriasEdificaciones = ['Residencial', 'Comercial', 'Hotelería', 'Oficinas'];
 
 export const obras = [
   // --- RESIDENCIAL ---
   {
     id: 'multifamiliar-continental-comas',
-    categoria: 'Residencial',
+    categoria: 'Edificaciones',
+    subcategoria: 'Residencial',
     titulo: 'Edificio Multifamiliar Continental',
     ubicacion: 'Comas, Lima',
     cliente: 'Propio',
@@ -21,7 +25,8 @@ export const obras = [
   },
   {
     id: 'vivienda-unifamiliar-la-molina',
-    categoria: 'Residencial',
+    categoria: 'Edificaciones',
+    subcategoria: 'Residencial',
     titulo: 'Vivienda Unifamiliar',
     ubicacion: 'La Molina, Lima',
     cliente: '',
@@ -34,7 +39,8 @@ export const obras = [
   },
   {
     id: 'casona-san-blas-junin',
-    categoria: 'Residencial',
+    categoria: 'Edificaciones',
+    subcategoria: 'Residencial',
     titulo: 'Remodelación Casona San Blas',
     ubicacion: 'San Blas, Junín',
     cliente: '',
@@ -47,7 +53,8 @@ export const obras = [
   },
   {
     id: 'hotel-ginebra',
-    categoria: 'Residencial',
+    categoria: 'Edificaciones',
+    subcategoria: 'Hotelería',
     titulo: 'Hotel Ginebra',
     ubicacion: 'Independencia, Lima',
     cliente: '',
@@ -114,7 +121,7 @@ export const obras = [
   },
   {
     id: 'polvorin-caraz',
-    categoria: 'Industrial',
+    categoria: 'Infraestructura',
     titulo: 'Polvorín',
     ubicacion: 'Caraz, Áncash',
     cliente: '',
@@ -127,7 +134,7 @@ export const obras = [
   },
   {
     id: 'polvorin-huanuco',
-    categoria: 'Industrial',
+    categoria: 'Infraestructura',
     titulo: 'Polvorín',
     ubicacion: 'Huánuco',
     cliente: '',
@@ -140,7 +147,7 @@ export const obras = [
   },
   {
     id: 'polvorin-satipo',
-    categoria: 'Industrial',
+    categoria: 'Infraestructura',
     titulo: 'Polvorín',
     ubicacion: 'Satipo, Junín',
     cliente: '',
@@ -194,7 +201,8 @@ export const obras = [
   },
   {
     id: 'mercado-conzac',
-    categoria: 'Infraestructura',
+    categoria: 'Edificaciones',
+    subcategoria: 'Comercial',
     titulo: 'Mercado Conzac',
     ubicacion: 'Los Olivos, Lima',
     cliente: 'Mercados Conzac',
@@ -207,7 +215,8 @@ export const obras = [
   },
   {
     id: 'centro-comercial-mexico-comas',
-    categoria: 'Infraestructura',
+    categoria: 'Edificaciones',
+    subcategoria: 'Comercial',
     titulo: 'Centro Comercial México',
     ubicacion: 'Comas, Lima',
     cliente: '',

@@ -1,15 +1,21 @@
 // src/components/react/ProjectTabs.jsx
 import React, { useState, useRef } from 'react';
-import { obras, categorias } from '../../data/obras.js';
+import { obras, categorias, subcategoriasEdificaciones } from '../../data/obras.js';
+
+// Subcategorías de Edificaciones que realmente tienen obras (en su orden oficial)
+const subcatsConObras = subcategoriasEdificaciones.filter((sub) =>
+  obras.some((o) => o.categoria === 'Edificaciones' && o.subcategoria === sub)
+);
 
 export default function ProjectTabs() {
-  const [activeCat, setActiveCat] = useState(categorias[0]); // 'Residencial'
+  const [activeCat, setActiveCat] = useState(categorias[0]); // 'Edificaciones'
+  const [activeSub, setActiveSub] = useState('Todas');
   const tabsContainerRef = useRef(null);
 
   const handleCategoryClick = (cat) => {
     setActiveCat(cat);
+    setActiveSub('Todas'); // al cambiar de categoría, reinicia el sub-filtro
 
-    // Scroll inteligente solo en celulares (< 768px)
     if (window.innerWidth < 768 && tabsContainerRef.current) {
       setTimeout(() => {
         tabsContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -17,7 +23,15 @@ export default function ProjectTabs() {
     }
   };
 
-  const filteredProjects = obras.filter((p) => p.categoria === activeCat);
+  const filteredProjects = obras.filter((p) => {
+    if (p.categoria !== activeCat) return false;
+    if (activeCat === 'Edificaciones' && activeSub !== 'Todas') {
+      return p.subcategoria === activeSub;
+    }
+    return true;
+  });
+
+  const subFilters = ['Todas', ...subcatsConObras];
 
   return (
     <div className="w-full max-w-[1050px] mx-auto">
@@ -31,8 +45,8 @@ export default function ProjectTabs() {
         }
       `}</style>
 
-      {/* BARRA DE CATEGORÍAS */}
-      <div ref={tabsContainerRef} className="w-full mb-12 scroll-mt-[96px] md:scroll-mt-[112px]">
+      {/* BARRA DE CATEGORÍAS PRINCIPALES */}
+      <div ref={tabsContainerRef} className="w-full mb-6 scroll-mt-[96px] md:scroll-mt-[112px]">
         <div className="flex flex-col sm:flex-row w-full gap-2 md:gap-3">
           {categorias.map((cat) => (
             <button
@@ -50,8 +64,27 @@ export default function ProjectTabs() {
         </div>
       </div>
 
+      {/* SUB-FILTRO (solo en Edificaciones) */}
+      {activeCat === 'Edificaciones' && (
+        <div className="w-full mb-10 flex flex-wrap items-center gap-2">
+          {subFilters.map((sub) => (
+            <button
+              key={sub}
+              onClick={() => setActiveSub(sub)}
+              className={`px-4 py-2 text-[13px] rounded-full border transition-all duration-200 ${
+                activeSub === sub
+                  ? 'bg-[#333333] text-white border-[#333333] font-medium'
+                  : 'bg-white text-slate-500 border-slate-200 font-normal hover:border-slate-400 hover:text-slate-700'
+              }`}
+            >
+              {sub}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* GRILLA DE PROYECTOS */}
-      <div key={activeCat} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-soft">
+      <div key={activeCat + activeSub} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-soft">
         {filteredProjects.length > 0 ? (
           filteredProjects.map((p) => (
             <a
@@ -70,7 +103,7 @@ export default function ProjectTabs() {
 
               <div className="p-8 flex-grow flex flex-col border-t border-slate-100">
                 <span className="text-[#e66c37] text-[11px] font-semibold uppercase tracking-wider mb-2 block">
-                  {p.categoria}
+                  {p.subcategoria || p.categoria}
                 </span>
                 <h3 className="text-[19px] font-semibold text-[#333333] mb-3 leading-snug group-hover:text-[#e66c37] transition-colors">
                   {p.titulo}

@@ -67,7 +67,7 @@ export default function ProjectCarousel() {
 
             <div className="p-6 md:p-8 flex-grow flex flex-col border-t border-slate-100 bg-white">
               <span className="text-[#e66c37] text-[11px] font-semibold uppercase tracking-wider mb-2 block">
-                {p.categoria}
+                {p.subcategoria || p.categoria}
               </span>
               <h3 className="text-[17px] md:text-[19px] font-semibold text-[#333333] mb-3 leading-snug group-hover:text-[#e66c37] transition-colors">
                 {p.titulo}

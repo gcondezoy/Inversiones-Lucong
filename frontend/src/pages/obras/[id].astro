@@ -14,6 +14,7 @@ export function getStaticPaths() {
 
 const { obra } = Astro.props;
 const tieneDescripcion = Boolean(obra.descripcion);
+const categoriaLabel = obra.subcategoria ? `${obra.categoria} · ${obra.subcategoria}` : obra.categoria;
 ---
 
 <Layout title={`${obra.titulo} | Obras | Lucong SAC`}>
@@ -30,7 +31,7 @@ const tieneDescripcion = Boolean(obra.descripcion);
           <span class="text-white font-semibold">{obra.titulo}</span>
         </nav>
         <span class="text-[#e66c37] text-[12px] md:text-[13px] font-semibold uppercase tracking-wider mb-3 block">
-          {obra.categoria}
+          {categoriaLabel}
         </span>
         <h1 class="text-[32px] md:text-[48px] font-bold text-white leading-[1.15] tracking-tight max-w-[800px]">
           {obra.titulo}
@@ -96,6 +97,12 @@ const tieneDescripcion = Boolean(obra.descripcion);
                 <dt class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">Categoría</dt>
                 <dd class="text-[#333333] font-semibold">{obra.categoria}</dd>
               </div>
+              {obra.subcategoria && (
+                <div>
+                  <dt class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">Tipo</dt>
+                  <dd class="text-[#333333] font-semibold">{obra.subcategoria}</dd>
+                </div>
+              )}
               {obra.cliente && (
                 <div>
                   <dt class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">Cliente</dt>
