@@ -9,7 +9,8 @@ import Footer from '../components/Footer.astro';
 	<Navbar />
 	<main>
 		<!-- 1. HERO ORIGINAL CON EFECTO PARALLAX Y ANIMACIÓN -->
-		<section class="relative w-full h-[calc(100vh-96px)] md:h-[calc(100vh-112px)] min-h-[400px] flex flex-col justify-center bg-black overflow-hidden bg-scroll md:bg-fixed bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1920&q=70');">
+		<section class="relative w-full h-[calc(100vh-96px)] md:h-[calc(100vh-112px)] min-h-[400px] flex flex-col justify-center bg-black overflow-hidden" data-parallax>
+			<div class="parallax-bg absolute inset-x-0 top-[-15%] h-[130%] bg-center bg-cover will-change-transform" style="background-image: url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=1920&q=70');"></div>
 			
 			<div class="absolute inset-0 bg-black/60"></div>
 			
