@@ -228,4 +228,16 @@ export const obras = [
   },
 ];
 
-export const obrasDestacadas = obras.filter((o) => o.destacada);
+// Obras más representativas para el carrusel del inicio (en este orden exacto)
+const destacadasOrden = [
+  'planta-cementos-inka-pisco',
+  'hotel-ginebra',
+  'multifamiliar-continental-comas',
+  'mercado-conzac',
+  'planta-agroindustrial-grupo-silvestre',
+  'centro-comercial-mexico-comas',
+  'cementos-inka-lurigancho-chosica',
+];
+export const obrasDestacadas = destacadasOrden
+  .map((id) => obras.find((o) => o.id === id))
+  .filter(Boolean);

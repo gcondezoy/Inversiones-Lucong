@@ -4,7 +4,16 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import AnimatedStats from '../components/react/AnimatedStats.jsx';
-import ProjectCarousel from '../components/react/ProjectCarousel.jsx'; 
+import ProjectCarousel from '../components/react/ProjectCarousel.jsx';
+
+// Imágenes del hero (slideshow con crossfade sutil). La de Cementos Inka lleva
+// el recuadro de video; las otras 2 no. Para activar la rotación, descomenta y
+// agrega las 2 imágenes del cliente (hasVideo: false).
+const heroSlides = [
+  { img: '/obras/planta-cementos-inka-pisco.jpg', hasVideo: true, alt: 'Planta Industrial Cementos Inka en Pisco' },
+  // { img: '/inicio/hero-2.jpg', hasVideo: false, alt: 'Descripción de la imagen 2' },
+  // { img: '/inicio/hero-3.jpg', hasVideo: false, alt: 'Descripción de la imagen 3' },
+];
 ---
 
 <Layout title="Inicio | Lucong SAC">
@@ -13,10 +22,18 @@ import ProjectCarousel from '../components/react/ProjectCarousel.jsx';
   <main class="w-full">
     
     <!-- 1. HERO DEL INICIO CON PARALLAX -->
-    <section class="relative w-full h-[calc(100vh-96px)] md:h-[calc(100vh-112px)] min-h-[500px] flex flex-col justify-center bg-black overflow-hidden">
-      <div class="absolute inset-0 bg-center bg-cover animate-hero-zoom" style="background-image: url('/obras/planta-cementos-inka-pisco.jpg');"></div>
+    <section class="relative w-full h-[calc(100vh-96px)] md:h-[calc(100vh-112px)] min-h-[500px] flex flex-col justify-center bg-black overflow-hidden" data-hero-slider>
+      {heroSlides.map((slide, i) => (
+        <div
+          class:list={["hero-slide absolute inset-0 bg-center bg-cover brightness-[1.15] saturate-[1.05] transition-opacity duration-[1200ms] ease-in-out animate-hero-zoom", i === 0 ? "opacity-100" : "opacity-0"]}
+          data-has-video={slide.hasVideo ? "true" : "false"}
+          style={`background-image: url('${slide.img}');`}
+          role="img"
+          aria-label={slide.alt}
+        ></div>
+      ))}
 
-      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="absolute inset-0 bg-black/15"></div>
 
       <button type="button" id="hero-video-trigger" aria-label="Ver video de la Planta Industrial Cementos Inka" class="absolute bottom-0 right-0 z-40 flex w-full md:w-[700px] lg:w-[850px] h-[120px] md:h-[160px] shadow-2xl text-left cursor-pointer group">
 
@@ -57,31 +74,45 @@ import ProjectCarousel from '../components/react/ProjectCarousel.jsx';
 
     <script is:inline>
       (function () {
+        // --- Modal de video ---
         const trigger = document.getElementById('hero-video-trigger');
         const modal = document.getElementById('hero-video-modal');
         const closeBtn = document.getElementById('hero-video-close');
         const player = document.getElementById('hero-video-player');
-        if (!trigger || !modal || !player) return;
-
-        function openModal() {
-          modal.classList.remove('hidden');
-          modal.classList.add('flex');
-          document.body.style.overflow = 'hidden';
-          try { player.currentTime = 0; player.play(); } catch (e) {}
-        }
-        function closeModal() {
-          modal.classList.add('hidden');
-          modal.classList.remove('flex');
-          document.body.style.overflow = '';
-          player.pause();
+        if (trigger && modal && player) {
+          const openModal = () => { modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow = 'hidden'; try { player.currentTime = 0; player.play(); } catch (e) {} };
+          const closeModal = () => { modal.classList.add('hidden'); modal.classList.remove('flex'); document.body.style.overflow = ''; player.pause(); };
+          trigger.addEventListener('click', openModal);
+          closeBtn.addEventListener('click', closeModal);
+          modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+          document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
         }
 
-        trigger.addEventListener('click', openModal);
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-        });
+        // --- Slideshow del hero (crossfade sutil) ---
+        const slider = document.querySelector('[data-hero-slider]');
+        if (!slider) return;
+        const slides = Array.from(slider.querySelectorAll('.hero-slide'));
+        // El recuadro de video solo se muestra cuando la imagen activa tiene video
+        const setBanner = (show) => {
+          if (!trigger) return;
+          trigger.style.transition = 'opacity 600ms ease';
+          trigger.style.opacity = show ? '1' : '0';
+          trigger.style.pointerEvents = show ? 'auto' : 'none';
+        };
+        if (slides[0]) setBanner(slides[0].dataset.hasVideo === 'true');
+
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (slides.length < 2 || reduce) return; // sin rotación con 1 sola imagen o movimiento reducido
+
+        let idx = 0;
+        setInterval(() => {
+          slides[idx].classList.remove('opacity-100');
+          slides[idx].classList.add('opacity-0');
+          idx = (idx + 1) % slides.length;
+          slides[idx].classList.remove('opacity-0');
+          slides[idx].classList.add('opacity-100');
+          setBanner(slides[idx].dataset.hasVideo === 'true');
+        }, 6000);
       })();
     </script>
 
