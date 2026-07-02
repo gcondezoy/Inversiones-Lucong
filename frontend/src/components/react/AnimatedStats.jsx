@@ -2,11 +2,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const statsData = [
-  { id: 1, end: 22, suffix: '+', title: 'AÑOS DE TRAYECTORIA' },
-  { id: 2, end: 150, suffix: '+', title: 'OBRAS COMPLETADAS' },
-  { id: 3, end: 80, suffix: '+', title: 'PROFESIONALES CALIFICADOS' },
-  { id: 4, end: 40, suffix: '+', title: 'CLIENTES CORPORATIVOS' },
-  { id: 5, end: 100, suffix: '%', title: 'CUMPLIMIENTO EN SEGURIDAD' },
+  { id: 1, end: 24, suffix: '+', title: 'AÑOS DE TRAYECTORIA' },
+  { id: 2, end: 25, suffix: '+', title: 'OBRAS CULMINADAS' },
+  { id: 3, end: 100, suffix: '%', title: 'CUMPLIMIENTO EN SEGURIDAD' },
+  { id: 4, end: 100, suffix: '%', title: 'CLIENTES SATISFECHOS' },
 ];
 
 export default function AnimatedStats() {
