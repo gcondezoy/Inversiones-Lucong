@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.inversioneslucong.com.pe/sitemap-index.xml

@@ -15,9 +15,12 @@ export function getStaticPaths() {
 const { obra } = Astro.props;
 const tieneDescripcion = Boolean(obra.descripcion);
 const categoriaLabel = obra.subcategoria ? `${obra.categoria} · ${obra.subcategoria}` : obra.categoria;
+const seoDescription = obra.descripcion
+  ? obra.descripcion.slice(0, 155)
+  : `${obra.titulo} — obra de ${obra.categoria.toLowerCase()} ejecutada por Inversiones Lucong SAC en ${obra.ubicacion}.`;
 ---
 
-<Layout title={`${obra.titulo} | Obras | Lucong SAC`}>
+<Layout title={`${obra.titulo} | Obras | Inversiones Lucong SAC`} description={seoDescription}>
   <Navbar />
   <main>
     <!-- CABECERA + IMAGEN COMPLETA (sin recorte) -->

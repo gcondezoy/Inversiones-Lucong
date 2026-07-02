@@ -4,9 +4,15 @@ import '../styles/global.css';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = 'Inversiones Lucong SAC — Ejecución integral de obras civiles en el Perú: edificaciones, industria e infraestructura, con más de 20 años de trayectoria.',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -16,7 +22,20 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/png" href="/favicon-lucong.png" />
 		<link rel="apple-touch-icon" href="/favicon-lucong.png" />
+		<link rel="canonical" href={canonicalURL} />
 		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL('/logo-lucong.png', Astro.site)} />
+		<meta property="og:locale" content="es_PE" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
 	</head>
 	<body class="bg-white text-slate-800 font-sans antialiased m-0 p-0 overflow-x-hidden">
 		<slot />
