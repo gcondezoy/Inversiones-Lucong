@@ -13,6 +13,27 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Nombre oficial que Google puede mostrar en los resultados (en vez del dominio)
+const siteName = 'Inversiones Lucong S.A.C.';
+const siteUrl = 'https://www.inversioneslucong.com.pe';
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{ '@type': 'WebSite', name: siteName, url: siteUrl },
+		{
+			'@type': 'Organization',
+			name: siteName,
+			alternateName: 'Inversiones Lucong SAC',
+			url: siteUrl,
+			logo: `${siteUrl}/logo-lucong.png`,
+			sameAs: [
+				'https://www.facebook.com/InversionesLucong?locale=es_LA',
+				'https://www.instagram.com/inversioneslucong?igsh=bDVlN2d1ZTEzMzI4',
+			],
+		},
+	],
+};
 ---
 
 <!doctype html>
@@ -38,6 +59,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	</head>
 	<body class="bg-white text-slate-800 font-sans antialiased m-0 p-0 overflow-x-hidden">
 		<slot />
